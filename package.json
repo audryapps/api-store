@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "knex": "^0.20.8",
     "pg": "^7.17.1",
+    "postgres": "^1.0.1",
     "touch": "^3.1.0",
     "touch-for-windows": "^1.0.0"
   },
