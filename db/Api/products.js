@@ -19,13 +19,13 @@ function validProduct(products) {
 }
 
 router.get('/', (req, res) => {
-  queries.getAll().then(products => {
+  queries.getAllProducts().then(products => {
     res.json(products);
   });
 });
 
 router.get('/:id', isValidId, (req, res, next) => {
-  queries.getOne(req.params.id).then(products => {
+  queries.getProduct(req.params.id).then(products => {
     if(products) {
       res.json(products);
     } else {
@@ -35,8 +35,8 @@ router.get('/:id', isValidId, (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  if(validSticker(req.body)) {
-    queries.create(req.body).then(products => {
+  if(validProduct(req.body)) {
+    queries.createroduct(req.body).then(products => {
       res.json(products[0]);
     });
   } else {
@@ -45,17 +45,17 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', isValidId, (req, res, next) => {
-  if(validSticker(req.body)) {
+  if(validProduct(req.body)) {
     queries.update(req.params.id, req.body).then(products => {
       res.json(products[0]);
     });
   } else {
-    next(new Error('Invalid sticker'));
+    next(new Error('Invalid product'));
   }
 });
 
 router.delete('/:id', isValidId, (req, res) => {
-  queries.delete(req.params.id).then(() => {
+  queries.deleteProduct(req.params.id).then(() => {
     res.json({
       deleted: true
     });

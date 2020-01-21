@@ -1,19 +1,19 @@
 const knex = require('./knex'); // the connection!
 
 module.exports = {
-  getAll() {
+  getAllProducts() {
     return knex('products');
   },
-  getOne(id) {
+  getProduct(id) {
     return knex('products').where('id', id).first();
   },
-  create(products) {
+  createProduct(products) {
     return knex('products').insert(products, '*');
   },
-  update(id, products) {
+  updateProduct(id, products) {
     return knex('products').where('id', id).update(products, '*');
   },
-  delete(id) {
+  deleteProduct(id) {
     return knex('products').where('id', id).del();
   }
 }
