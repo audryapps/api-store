@@ -4,8 +4,8 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex.raw('SELECT * from todos').then(function(todos) {
-    res.send(todos.rows);
+  knex.raw('SELECT * from products').then(function(products) {
+    res.send(products.rows);
   });
 });
 
